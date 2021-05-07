@@ -33,21 +33,33 @@ export default function BottomTabNavigator() {
         name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Entypo name="home" size={30} style={{ marginBottom: -3 }} color={color} />,
-
+          tabBarIcon: ({ color }) => <Entypo name="home" size={25} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Search"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="search" size={25} style={{ marginBottom: -3 }} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Your Library"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="bookshelf" size={25} style={{ marginBottom: -3 }} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Premium"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <FontAwesome5 name="spotify" size={22} style={{ marginBottom: -3 }} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
-
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
