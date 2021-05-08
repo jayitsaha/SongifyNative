@@ -7,13 +7,19 @@ import {
 	TouchableWithoutFeedback,
 } from "react-native";
 import { album } from "../../types";
+import { useNavigation } from "@react-navigation/native";
+
 export type AlbumProps = {
 	album: album;
 };
 
 const Album = (props: AlbumProps) => {
+	const navigation = useNavigation();
+
 	const onPress = () => {
-		console.log("WASSUP");
+		navigation.navigate("AlbumScreen", {
+			id: props.album.id,
+		});
 	};
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
