@@ -10,22 +10,19 @@ export type AlbumCategoryProps = {
 
 const AlbumCategory = (props: AlbumCategoryProps) => (
 	<View style={styles.container}>
-		<Text style={styles.text}>{props.album.artistsHeadline}</Text>
+		<Text style={styles.title}>{props.album.artistsHeadline}</Text>
 	</View>
 );
 
 const styles = StyleSheet.create({
 	container: {
-		width: 155,
 		margin: 10,
 	},
-	image: {
-		width: "100%",
-		height: 155,
-	},
-	text: {
-		color: "grey",
-		marginTop: 10,
+	title: {
+		color: "white",
+		fontSize: 30,
+		fontWeight: "bold",
+		margin: 10,
 	},
 });
 export default AlbumCategory;
