@@ -10,7 +10,7 @@ export type AlbumCategoryProps = {
 
 const AlbumCategory = (props: AlbumCategoryProps) => (
 	<View style={styles.container}>
-		<Text style={styles.title}>{props.album.artistsHeadline}</Text>
+		<Text style={styles.title}>{props.title}</Text>
 	</View>
 );
 
