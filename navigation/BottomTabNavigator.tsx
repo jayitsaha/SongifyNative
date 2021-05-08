@@ -17,6 +17,8 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
+import AlbumScreen from "../screens/AlbumScreen";
+
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 import { View, Image, Text, StyleSheet } from "react-native";
@@ -100,11 +102,37 @@ function TabOneNavigator() {
 			<TabOneStack.Screen
 				name="HomeScreen"
 				component={HomeScreen}
-				// options={{ headerTitle: "hi" }}
 				options={{
 					headerTitle: (
 						props // App Logo
 					) => (
+						<View
+							style={{
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<Image
+								style={{
+									width: 200,
+									height: 50,
+									// marginLeft: -50,
+								}}
+								source={require("../assets/images/spotify1.png")}
+								resizeMode="contain"
+							/>
+						</View>
+					),
+				}}
+			/>
+
+			{/* Album Screen */}
+
+			<TabOneStack.Screen
+				name="AlbumScreen"
+				component={AlbumScreen}
+				options={{
+					headerTitle: () => (
 						<View
 							style={{
 								justifyContent: "center",
