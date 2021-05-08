@@ -11,7 +11,7 @@ const SongListItem = (props: SongListItemProps) => {
 	const { song } = props;
 	return (
 		<View style={styles.container}>
-			<Image source={{ uri: song.imageUri }} style={styles.image} />
+			{/* <Image source={{ uri: song.imageUri }} style={styles.image} /> */}
 			<View style={styles.rightContainer}>
 				<Text style={styles.title}>{song.title}</Text>
 				<Text style={styles.artist}>{song.artist}</Text>
@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
 		marginLeft: 15,
 	},
 	title: {
-		color: "white",
-		fontSize: 24,
+		color: "#F5F5F5",
+		fontSize: 18,
 	},
 	artist: {
 		color: "lightgray",
-		fontSize: 20,
+		fontSize: 14,
 	},
 });
 export default SongListItem;
