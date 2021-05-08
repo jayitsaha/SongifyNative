@@ -1,16 +1,29 @@
-import * as React from "react";
-import { StyleSheet, FlatList } from "react-native";
-import AlbumCategory from "../components/AlbumCategory";
-import { Text, View } from "../components/Themed";
-import albumCategories from "../data/albumCategories";
+import { StyleSheet, FlatList, View, Text } from "react-native";
+import React, { useEffect } from "react";
+import { useRoute } from "@react-navigation/native";
 
-export default function AlbumScreen() {
+// import SongListItem from "../components/SongListItem";
+// import AlbumHeader from "../components/AlbumHeader";
+import albumDetails from "../data/albumDetails";
+
+const AlbumScreen = () => {
+	const route = useRoute();
+
+	useEffect(() => {
+		console.log(route);
+	}, []);
+
 	return (
-		<View style={styles.container}>
-			<Text>HIIIIIIII</Text>
+		<View>
+			{/* <FlatList
+				data={albumDetails.songs}
+				renderItem={({ item }) => <SongListItem song={item} />}
+				keyExtractor={(item) => item.id}
+				ListHeaderComponent={() => <AlbumHeader album={albumDetails} />}
+			/> */}
 		</View>
 	);
-}
+};
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -27,3 +40,4 @@ const styles = StyleSheet.create({
 		width: "80%",
 	},
 });
+export default AlbumScreen;
