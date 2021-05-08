@@ -89,17 +89,9 @@ export default function BottomTabNavigator() {
 		</BottomTab.Navigator>
 	);
 }
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: {
-	name: React.ComponentProps<typeof Ionicons>["name"];
-	color: string;
-}) {
-	return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
+
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
@@ -124,13 +116,12 @@ function TabOneNavigator() {
 									width: 200,
 									height: 50,
 									// marginLeft: -50,
-		   						}}
+								}}
 								source={require("../assets/images/spotify1.png")}
 								resizeMode="contain"
 							/>
 						</View>
 					),
-					// headerTitleStyle: { flex: 1, textAlign: "left" },
 				}}
 			/>
 		</TabOneStack.Navigator>
