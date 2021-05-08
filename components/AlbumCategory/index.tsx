@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { album } from "../../types";
-export type AlbumProps = {
-	album: album;
+import Album from "../Album";
+
+export type AlbumCategoryProps = {
+	title: string;
+	albums: [album];
 };
 
-const Album = (props: AlbumProps) => (
+const AlbumCategory = (props: AlbumCategoryProps) => (
 	<View style={styles.container}>
-		<Image source={{ uri: props.album.imageUri }} style={styles.image} />
 		<Text style={styles.text}>{props.album.artistsHeadline}</Text>
 	</View>
 );
@@ -26,4 +28,4 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 });
-export default Album;
+export default AlbumCategory;
