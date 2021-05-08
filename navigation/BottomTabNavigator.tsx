@@ -137,6 +137,7 @@ function TabOneNavigator() {
 							style={{
 								justifyContent: "center",
 								alignItems: "center",
+								marginRight: 45,
 							}}
 						>
 							<Image
