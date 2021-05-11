@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Text, Image, View, StyleSheet } from "react-native";
+import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
-import { AppContext } from "../../AppContext";
+// import { AppContext } from "../../AppContext";
 
 import { Song } from "../../types";
 
@@ -21,22 +21,22 @@ const PlayerWidget = () => {
 	const [duration, setDuration] = useState<number | null>(null);
 	const [position, setPosition] = useState<number | null>(null);
 
-	const { songId } = useContext(AppContext);
+	// const { songId } = useContext(AppContext);
 
-	useEffect(() => {
-		const fetchSong = async () => {
-			try {
-				// const data = await API.graphql(
-				// 	graphqlOperation(getSong, { id: songId })
-				// );
-				// setSong(data.data.getSong);
-			} catch (e) {
-				console.log(e);
-			}
-		};
+	// useEffect(() => {
+	// 	const fetchSong = async () => {
+	// 		try {
+	// 			// const data = await API.graphql(
+	// 			// 	graphqlOperation(getSong, { id: songId })
+	// 			// );
+	// 			// setSong(data.data.getSong);
+	// 		} catch (e) {
+	// 			console.log(e);
+	// 		}
+	// 	};
 
-		fetchSong();
-	}, [songId]);
+	// 	fetchSong();
+	// }, [songId]);
 
 	const onPlaybackStatusUpdate = (status) => {
 		setIsPlaying(status.isPlaying);
@@ -62,7 +62,7 @@ const PlayerWidget = () => {
 		if (song) {
 			playCurrentSong();
 		}
-	}, [song]);
+	}, []);
 
 	const onPlayPausePress = async () => {
 		if (!sound) {
@@ -88,16 +88,25 @@ const PlayerWidget = () => {
 	}
 	return (
 		<View style={styles.container}>
-			<Image source={{ uri: song.imageUri }} style={styles.image} />
-			<View style={styles.rightContainer}>
-				<View style={styles.nameContainer}>
-					<Text style={styles.title}>{song.title}</Text>
-					<Text style={styles.artist}>{song.artist}</Text>
-				</View>
+			<View style={[styles.progress, { width: `${getProgress()}%` }]} />
+			<View style={styles.row}>
+				<Image source={{ uri: song.imageUri }} style={styles.image} />
+				<View style={styles.rightContainer}>
+					<View style={styles.nameContainer}>
+						<Text style={styles.title}>{song.title}</Text>
+						<Text style={styles.artist}>{song.artist}</Text>
+					</View>
 
-				<View style={styles.iconsContainer}>
-					<AntDesign name="hearto" size={30} color={"white"} />
-					<FontAwesome name="play" size={30} color={"white"} />
+					<View style={styles.iconsContainer}>
+						<AntDesign name="hearto" size={30} color={"white"} />
+						<TouchableOpacity onPress={onPlayPausePress}>
+							<FontAwesome
+								name={isPlaying ? "pause" : "play"}
+								size={30}
+								color={"white"}
+							/>
+						</TouchableOpacity>
+					</View>
 				</View>
 			</View>
 		</View>
@@ -109,11 +118,16 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		bottom: 46,
 		backgroundColor: "#131313",
-		flexDirection: "row",
 		width: "100%",
 		borderWidth: 2,
 		borderColor: "black",
-		alignItems: "center",
+	},
+	progress: {
+		height: 3,
+		backgroundColor: "#bcbcbc",
+	},
+	row: {
+		flexDirection: "row",
 	},
 	image: {
 		width: 75,
