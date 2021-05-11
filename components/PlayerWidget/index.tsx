@@ -34,7 +34,7 @@ const PlayerWidget = () => {
 const styles = StyleSheet.create({
 	container: {
 		position: "absolute",
-		bottom: 79,
+		bottom: 46,
 		backgroundColor: "#131313",
 		flexDirection: "row",
 		width: "100%",
@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		color: "white",
-		fontSize: 18,
+		fontSize: 16,
 		fontWeight: "bold",
 		margin: 10,
 	},
 	artist: {
 		color: "lightgray",
-		fontSize: 18,
+		fontSize: 14,
 	},
 });
 
