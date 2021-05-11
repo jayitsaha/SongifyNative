@@ -8,10 +8,6 @@ import { Song } from "../../types";
 
 const PlayerWidget = () => {
 	// const [song, setSong] = useState(null);
-	const [sound, setSound] = useState<Sound | null>(null);
-	const [isPlaying, setIsPlaying] = useState<boolean>(true);
-	const [duration, setDuration] = useState<number | null>(null);
-	const [position, setPosition] = useState<number | null>(null);
 	const song = {
 		id: "1",
 		uri: "https://not-just-trash.s3-eu-west-1.amazonaws.com/WhatsApp+Audio+2020-09-22+at+14.20.25.mp4",
@@ -20,6 +16,11 @@ const PlayerWidget = () => {
 		title: "High on You",
 		artist: "Helen",
 	};
+	const [sound, setSound] = useState<Sound | null>(null);
+	const [isPlaying, setIsPlaying] = useState<boolean>(true);
+	const [duration, setDuration] = useState<number | null>(null);
+	const [position, setPosition] = useState<number | null>(null);
+
 	const { songId } = useContext(AppContext);
 
 	useEffect(() => {
@@ -48,7 +49,7 @@ const PlayerWidget = () => {
 			await sound.unloadAsync();
 		}
 
-		const { sound } = await Sound.createAsync(
+		const { sound: newSound } = await Sound.createAsync(
 			{ uri: song.uri },
 			{ shouldPlay: isPlaying },
 			onPlaybackStatusUpdate
